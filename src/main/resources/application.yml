@@ -1,0 +1,29 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: security-service
+  profiles:
+    default: dev
+  config:
+    import: optional:configserver:http://${CONFIG_SERVER_HOSTNAME}:8090
+  datasource:
+    url: jdbc:mariadb://${DB_HOSTNAME}:3306/${DB_NAME}?createDatabaseIfNotExist=true
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: false
+    show-sql: true
+    open-in-view: false
+  flyway:
+    enabled: true
+application:
+  security:
+    issuer-url: http://${SECURITY_HOSTNAME}:8088
