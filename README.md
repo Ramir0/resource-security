@@ -19,6 +19,7 @@ Please make sure that all of these dependencies are installed and configured cor
 ### Running from Maven
 - `mvn spring-boot:run`
 ### Running from Dockerfile
+- `mvn clean install`
 - `docker build --no-cache -t security-service:latest .`
 - `docker run -d --env-file .env --name security-service -p 8088:8088 --network resource-network security-service`
 
@@ -27,8 +28,6 @@ Please make sure that all of these dependencies are installed and configured cor
 `mvn clean test` - To run the unit tests
 
 ## Cleaning Project and Resources
-`mvn clean -U` - Clean project files generated and update dependencies
-
-`docker-compose down --volumes` - Delete all services related to the project
-
-`docker network rm resource-network` - Delete docker network
+- `mvn clean -U` - Clean project files generated and update dependencies
+- `docker-compose down --volumes` - Delete all services related to the project
+- `docker network rm resource-network` - Delete docker network
